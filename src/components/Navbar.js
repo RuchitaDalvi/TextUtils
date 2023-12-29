@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 export default function Navbar(props) {
   return (
-<nav className="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+<nav className="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme={props.mode}>
   <div className="container-fluid">
     <a className="navbar-brand" href="#">{props.title}</a>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,10 +14,14 @@ export default function Navbar(props) {
           <a className="nav-link active" aria-current="page" href="/">Home</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="/">{props.aboutText}</a>
+          <a className="nav-link" href="/">{props.about}</a>
         </li>
       </ul>
     </div>
+    <div className={`form-check form-switch text-${props.mode==='light'?'dark':'light'}`}>
+  <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onClick={props.toggleMode}/>
+  <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Enable dark mode</label>
+</div>
   </div>
 </nav>
   )
@@ -25,10 +29,10 @@ export default function Navbar(props) {
 
 Navbar.propTypes = {
     title: PropTypes.string.isRequired,
-    aboutText: PropTypes.string.isRequired
+    about: PropTypes.string.isRequired
 }
 
 Navbar.defaultProps = {
     title: 'Set title here',
-    aboutText: 'About'
+    about: 'About'
   };
