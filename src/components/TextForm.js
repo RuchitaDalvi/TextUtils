@@ -7,23 +7,28 @@ const handleOnChange=(event)=>{
 const handleOnUpperClick=()=>{
     let newText=text.toUpperCase();
     setText(newText);
+    props.showAlert("converted to Uppercase","success");
   }
   const handleOnLowerClick=()=>{
     let newText=text.toLowerCase();
     setText(newText);
+    props.showAlert("converted to Lowercase","success");
   }
   const handleOnClearClick=()=>{
     let newText='';
     setText(newText);
+    props.showAlert("Text is cleared","success");
   }
   const handleOnCopyClick=()=>{
     let text=document.getElementById("exampleFormControlTextarea1");
     text.select();
     navigator.clipboard.writeText(text.value);
+    props.showAlert("text is copied","success");
   }
   const handleOnRemoveSpaceClick=()=>{
     let txt=text.split(/[ ]+/);
     setText(txt.join(" "));
+    props.showAlert("Extra spaces has been removed","success");
   }
 const [text,setText]= useState('');
 
